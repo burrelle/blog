@@ -1,25 +1,18 @@
 import matter from 'gray-matter';
 import { array } from 'prop-types';
 import Layout from '../components/Layout';
-import Highlight from '../components/Highlight';
 import PostList from '../components/PostList';
 
-export default function Home({ posts }) {
+export default function Thoughts({ posts }) {
   return (
-    <Layout pageTitle="Home">
-      <h1 className="text-3xl font-semibold md:text-4xl">Evan Burrell</h1>
-      <p className="mt-4">Software Developer.</p>
-      <p className="mt-4">
-        Passionate about <Highlight>PHP</Highlight>,
-        <Highlight additionalClasses="ml-2">Laravel</Highlight>, and
-        <Highlight additionalClasses="ml-2">Javascript</Highlight>.
-      </p>
-      <PostList posts={posts} limit={3}></PostList>
+    <Layout pageTitle="Thoughts">
+      <h1 className="text-3xl font-semibold md:text-4xl">Thoughts about...</h1>
+      <PostList posts={posts}></PostList>
     </Layout>
   );
 }
 
-Home.propTypes = {
+Thoughts.propTypes = {
   posts: array,
 };
 
