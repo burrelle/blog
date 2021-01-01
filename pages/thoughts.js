@@ -7,7 +7,7 @@ export default function Thoughts({ posts }) {
   return (
     <Layout pageTitle="Thoughts">
       <h1 className="text-3xl font-semibold md:text-4xl">Thoughts about...</h1>
-      <PostList posts={posts}></PostList>
+      <PostList posts={posts} />
     </Layout>
   );
 }
@@ -17,7 +17,7 @@ Thoughts.propTypes = {
 };
 
 export async function getStaticProps() {
-  const posts = (context => {
+  const posts = ((context) => {
     const keys = context.keys();
     const values = keys.map(context);
 
@@ -26,7 +26,7 @@ export async function getStaticProps() {
       const value = values[index];
       const document = matter(value.default);
       return {
-        date: new Date(document.data.date).toLocaleDateString(),
+        date: new Date(document.data.date).getTime(),
         description: document.data.description || null,
         title: document.data.title,
         slug,

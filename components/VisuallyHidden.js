@@ -16,6 +16,7 @@ export default function VisuallyHidden(props) {
         whiteSpace: 'nowrap',
         wordWrap: 'normal',
       }}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     />
   );

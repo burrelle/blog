@@ -14,7 +14,7 @@ export default function Home({ posts }) {
         <Highlight additionalClasses="ml-2">Laravel</Highlight>, and
         <Highlight additionalClasses="ml-2">Javascript</Highlight>.
       </p>
-      <PostList posts={posts} limit={3}></PostList>
+      <PostList posts={posts} limit={3} />
     </Layout>
   );
 }
@@ -24,7 +24,7 @@ Home.propTypes = {
 };
 
 export async function getStaticProps() {
-  const posts = (context => {
+  const posts = ((context) => {
     const keys = context.keys();
     const values = keys.map(context);
 
@@ -33,7 +33,7 @@ export async function getStaticProps() {
       const value = values[index];
       const document = matter(value.default);
       return {
-        date: new Date(document.data.date).toLocaleDateString(),
+        date: new Date(document.data.date).getTime(),
         description: document.data.description || null,
         title: document.data.title,
         slug,
