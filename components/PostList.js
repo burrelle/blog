@@ -4,7 +4,6 @@ import Highlight from './Highlight';
 
 export default function PostList({ posts, limit = null }) {
   const adjustedLimit = limit || posts.length;
-  console.log(posts.map((p) => [p.date, new Date(p.date)]));
   const sortedPosts = posts
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, adjustedLimit);

@@ -1,6 +1,7 @@
 import matter from 'gray-matter';
 import { string } from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import CodeBlock from '../components/CodeBlock';
 import ParagraphBlock from '../components/ParagraphBlock';
@@ -9,9 +10,15 @@ import ThematicBreak from '../components/ThematicBreak';
 import InlineCode from '../components/InlineCode';
 import MarkdownLink from '../components/MarkdownLink';
 
-export default function Post({ title, markdownBody, date }) {
+export default function Post({ title, markdownBody, date, description }) {
   return (
     <Layout pageTitle={title}>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ev_burrell" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+      </Head>
       <h1 className="mb-4 text-xl font-semibold md:text-2xl">{title}</h1>
       <time>{date}</time>
       <div className="mt-4 break-words">
@@ -35,6 +42,7 @@ Post.propTypes = {
   markdownBody: string,
   title: string,
   date: string,
+  description: string,
 };
 
 export async function getStaticProps({ ...ctx }) {
@@ -48,6 +56,7 @@ export async function getStaticProps({ ...ctx }) {
       title: data.data.title,
       date: new Date(data.data.date).toLocaleDateString(),
       markdownBody: data.content,
+      description: data.data.description,
     },
   };
 }
