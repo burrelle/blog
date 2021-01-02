@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { array } from 'prop-types';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import Highlight from '../components/Highlight';
 import PostList from '../components/PostList';
@@ -7,6 +8,15 @@ import PostList from '../components/PostList';
 export default function Home({ posts }) {
   return (
     <Layout pageTitle="Home">
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ev_burrell" />
+        <meta name="twitter:title" content="Evan Burrell" />
+        <meta
+          name="twitter:description"
+          content="Software Developer passionate about PHP, Laravel and Javascript."
+        />
+      </Head>
       <h1 className="text-3xl font-semibold md:text-4xl">Evan Burrell</h1>
       <p className="mt-4">Software Developer.</p>
       <p className="mt-4">
